@@ -58,3 +58,4 @@ mysql:
   volumes:
   - ./scripts/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
   - ./conf/mysql/:/etc/mysql/conf.d
+  - /var/lib/mysql
