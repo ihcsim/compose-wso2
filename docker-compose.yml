@@ -1,0 +1,60 @@
+wso2apim:
+  image: isim/wso2apim:$APIM_VERSION
+  ports:
+  - "9444:9443"
+  - "9764:9763"
+  volumes:
+  - ./conf/wso2am/master-datasources.xml:/opt/wso2am-$APIM_VERSION/repository/conf/datasources/master-datasources.xml
+  - ./conf/wso2am/registry.xml:/opt/wso2am-$APIM_VERSION/repository/conf/registry.xml
+  - ./lib/mysql-connector-java-5.1.38-bin.jar:/opt/wso2am-$APIM_VERSION/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
+  links:
+  - wso2greg
+  - mysql
+
+wso2esb:
+  image: isim/wso2esb:$ESB_VERSION
+  ports: 
+  - "9445:9443"
+  - "9765:9763"
+  volumes:
+  - ./conf/wso2esb/master-datasources.xml:/opt/wso2esb-$ESB_VERSION/repository/conf/datasources/master-datasources.xml
+  - ./conf/wso2esb/registry.xml:/opt/wso2esb-$ESB_VERSION/repository/conf/registry.xml
+  - ./lib/mysql-connector-java-5.1.38-bin.jar:/opt/wso2esb-$ESB_VERSION/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
+  links:
+  - wso2greg
+  - mysql
+
+wso2dss:
+  image: isim/wso2dss:$DSS_VERSION
+  ports: 
+  - "9446:9443"
+  - "9766:9763"
+  volumes:
+  - ./conf/wso2dss/master-datasources.xml:/opt/wso2dss-$DSS_VERSION/repository/conf/datasources/master-datasources.xml
+  - ./conf/wso2dss/registry.xml:/opt/wso2dss-$DSS_VERSION/repository/conf/registry.xml
+  - ./lib/mysql-connector-java-5.1.38-bin.jar:/opt/wso2dss-$DSS_VERSION/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
+  links:
+  - wso2greg
+  - mysql
+
+wso2greg:
+  container_name: wso2greg
+  image: isim/wso2greg:$GREG_VERSION
+  command: /opt/wso2greg-$GREG_VERSION/bin/wso2server.sh -Dsetup
+  ports:
+  - "9447:9443"
+  - "9767:9763"
+  volumes:
+  - ./conf/wso2greg/master-datasources.xml:/opt/wso2greg-$GREG_VERSION/repository/conf/datasources/master-datasources.xml
+  - ./lib/mysql-connector-java-5.1.38-bin.jar:/opt/wso2greg-$GREG_VERSION/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
+  links:
+  - mysql
+  
+mysql:
+  container_name: mysql-server
+  image: mysql:$MYSQL_VERSION
+  environment:
+  - MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD
+  volumes:
+  - ./scripts/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+  - ./conf/mysql/:/etc/mysql/conf.d
