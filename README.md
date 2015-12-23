@@ -31,8 +31,9 @@ Before you get started with a `docker-compose up`, there are a few things you sh
 ### Web Admin Consoles
 
 Components             | URL
----------------------- | ----------------------
-API Manager            | https://localhost:9444
+---------------------- | -----------------------------
+Identity Server        | https://localhost:9443
+API Manager            | https://localhost:9444/carbon
 Enterprise Service Bus | https://localhost:9445
 Data Service Server    | https://localhost:9446
 Governance Registry    | https://localhost:9447/carbon
