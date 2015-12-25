@@ -18,27 +18,29 @@ Before you get started with a `docker-compose up`, there are a few things you sh
 
 1. The WSO2 container images are quite large, ranging from 750MB to a whooping 1.0GB.
 2. The first run of `docker-compose up` takes forever as the service images are pulled from my AWS S3 buckets, and the Governance Registry is started with the `-Dsetup` flag in order to initialize all the database tables. 
-** To reduce the annoyance, run `docker-compose pull` prior to running `docker-compose up`.
+** Try run `docker-compose pull` prior to running `docker-compose up`.
 3. Accessing the `/_system/governance/` mounted shared governance partition from the web console is also slow.
+4. This project utilizes [Compose's networking feature](https://docs.docker.com/compose/networking/) to facilitate inter-containers networking communication.
 
 ### Usage
 
-* Set up default environmental variables: `source scripts/env.bash`
-* Pull services: `docker-compose pull <service>`
-* Run services: `docker-compose up <service>`
-* Scale services: `docker-compose scale <service=counts>`
+1. Set up default environmental variables: `source scripts/env.bash`
+2. Pull services: `docker-compose pull <service>`
+3. Run services: `docker-compose -p wso2 --x-networking up <service>`
+4. Scale services: `docker-compose -p wso2 scale <service=counts>`
+5. View logs: `docker-compose -p wso2 logs <service>`
 
 ### Web Admin Consoles
 
 Components             | URL
 ---------------------- | -----------------------------
-Identity Server        | https://localhost:9443
-API Manager            | https://localhost:9444/carbon
-Enterprise Service Bus | https://localhost:9445
-Data Service Server    | https://localhost:9446
-Governance Registry    | https://localhost:9447/carbon
+Identity Server        | https://$DOCKER_HOST:9443
+API Manager            | https://$DOCKER_HOST:9444
+Enterprise Service Bus | https://$DOCKER_HOST:9445
+Data Service Server    | https://$DOCKER_HOST:9446
+Governance Registry    | https://$DOCKER_HOST:9447
 
-If you are using `docker-machine`, replace `localhost` with `docker-machine ip <machine>`.
+If you are using `docker-machine`, you can get the value of `$DOCKER_HOST` with `docker-machine ip <machine>`.
 
 ### Governance Registry Persistance
 

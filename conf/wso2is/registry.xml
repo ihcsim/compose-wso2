@@ -76,10 +76,10 @@
       <dataSource>jdbc/WSO2CarbonDB_GREG</dataSource>
     </dbConfig>
 
-    <remoteInstance url="https://wso2greg:9443/registry">
+    <remoteInstance url="https://wso2_registry_1:9443/registry">
       <id>instanceid</id>
       <dbConfig>remote_registry</dbConfig>
-      <cacheId>root@jdbc:mysql://mysql-server:3306/registrydb</cacheId>
+      <cacheId>root@jdbc:mysql://wso2_mysql_1:3306/registrydb</cacheId>
       <readOnly>false</readOnly>
       <enableCache>true</enableCache>
       <registryRoot>/</registryRoot>

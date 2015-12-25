@@ -56,7 +56,7 @@
       </jndiConfig>
       <definition type="RDBMS">
         <configuration>
-          <url>jdbc:mysql://mysql-server:3306/registrydb?useSSL=false</url>
+          <url>jdbc:mysql://wso2_mysql_1:3306/registrydb?useSSL=false</url>
           <username>root</username>
           <password>password</password>
           <driverClassName>com.mysql.jdbc.Driver</driverClassName>

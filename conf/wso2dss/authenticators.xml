@@ -32,10 +32,10 @@
         <Priority>10</Priority>
         <Config>
             <Parameter name="LoginPage">/carbon/admin/login.jsp</Parameter>
-            <Parameter name="ServiceProviderID">wso2dss</Parameter>
-            <Parameter name="IdentityProviderSSOServiceURL">https://wso2is:9443/samlsso</Parameter>
+            <Parameter name="ServiceProviderID">wso2dss-sp</Parameter>
+            <Parameter name="IdentityProviderSSOServiceURL">https://wso2_identity_1:9443/samlsso</Parameter>
             <Parameter name="NameIDPolicyFormat">urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</Parameter>
-            <Parameter name="AssertionConsumerServiceURL">https://localhost:9443/acs</Parameter>
+            <Parameter name="AssertionConsumerServiceURL">https://wso2_dss_1:9443/acs</Parameter>
 
             <!-- <Parameter name="IdPCertAlias">wso2carbon</Parameter> -->
             <!-- <Parameter name="ResponseSignatureValidationEnabled">false</Parameter> -->
