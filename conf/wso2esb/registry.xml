@@ -24,7 +24,7 @@
 
     <currentDBConfig>wso2registry</currentDBConfig>
     <readOnly>false</readOnly>
-    <enableCache>true</enableCache>
+    <enableCache>false</enableCache>
     <registryRoot>/</registryRoot>
 
     <dbConfig name="wso2registry">
@@ -105,7 +105,7 @@
       <dbConfig>remote_registry</dbConfig>
       <cacheId>root@jdbc:mysql://wso2_mysql_1:3306/registrydb</cacheId>
       <readOnly>false</readOnly>
-      <enableCache>true</enableCache>
+      <enableCache>false</enableCache>
       <registryRoot>/</registryRoot>
     </remoteInstance>
 

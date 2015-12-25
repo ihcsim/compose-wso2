@@ -46,7 +46,7 @@ If you are using `docker-machine`, you can get the value of `$DOCKER_HOST` with 
 
 The [Governance Registry](http://wso2.com/products/governance-registry/) is used to provide a shared governance partition backed by a MySQL database, as documented [here](https://docs.wso2.com/display/ESB490/Governance+Partition+in+a+Remote+Registry). The database `registrydb` is created by the `scripts/mysql/init.sql` script on-start. 
 
-To test the shared governance partition set-up, navigate to the `/_system/governance` registry from any of the web consoles. Add or modify some resources, and expect the changes to be seen in the web consoles of other components. (Some components seem to pick up the changes later.)
+To test the shared governance partition set-up, navigate to the `/_system/governance` registry from any of the web consoles. Add or modify some resources, and expect the changes to be seen in the web consoles of other components.
 
 There are two others adjustments I had to make to get this to work:
 

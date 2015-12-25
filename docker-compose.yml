@@ -47,6 +47,7 @@ registry:
   - "9767:9763"
   volumes:
   - ./conf/wso2greg/master-datasources.xml:/opt/wso2greg-$GREG_VERSION/repository/conf/datasources/master-datasources.xml
+  - ./conf/wso2greg/registry.xml:/opt/wso2greg-$GREG_VERSION/repository/conf/registry.xml
   - ./lib/mysql-connector-java-5.1.38-bin.jar:/opt/wso2greg-$GREG_VERSION/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
 
 mysql:
