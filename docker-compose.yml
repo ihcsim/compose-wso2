@@ -1,12 +1,15 @@
-identity:
+is:
   image: isim/wso2is:$IS_VERSION
+  hostname: wso2identity
   ports:
   - "9443:9443"
   - "9763:9763"
   volumes:
   - ./conf/wso2is/master-datasources.xml:/opt/wso2is-$IS_VERSION/repository/conf/datasources/master-datasources.xml
+  - ./conf/wso2is/carbon.xml:/opt/wso2is-$IS_VERSION/repository/conf/carbon.xml
   - ./conf/wso2is/registry.xml:/opt/wso2is-$IS_VERSION/repository/conf/registry.xml
   - ./conf/wso2is/user-mgt.xml:/opt/wso2is-$IS_VERSION/repository/conf/user-mgt.xml
+  - ./conf/wso2is/sso-idp-config.xml:/opt/wso2is-$IS_VERSION/repository/conf/security/sso-idp-config.xml
   - ./lib/mysql-connector-java-5.1.38-bin.jar:/opt/wso2is-$IS_VERSION/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
 
 apim:
@@ -17,6 +20,7 @@ apim:
   volumes:
   - ./conf/wso2am/master-datasources.xml:/opt/wso2am-$APIM_VERSION/repository/conf/datasources/master-datasources.xml
   - ./conf/wso2am/registry.xml:/opt/wso2am-$APIM_VERSION/repository/conf/registry.xml
+  - ./conf/wso2am/authenticators.xml:/opt/wso2am-$APIM_VERSION/repository/conf/security/authenticators.xml
   - ./lib/mysql-connector-java-5.1.38-bin.jar:/opt/wso2am-$APIM_VERSION/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
 
 esb:
@@ -27,6 +31,7 @@ esb:
   volumes:
   - ./conf/wso2esb/master-datasources.xml:/opt/wso2esb-$ESB_VERSION/repository/conf/datasources/master-datasources.xml
   - ./conf/wso2esb/registry.xml:/opt/wso2esb-$ESB_VERSION/repository/conf/registry.xml
+  - ./conf/wso2esb/authenticators.xml:/opt/wso2esb-$ESB_VERSION/repository/conf/security/authenticators.xml
   - ./lib/mysql-connector-java-5.1.38-bin.jar:/opt/wso2esb-$ESB_VERSION/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
 
 dss:
@@ -37,16 +42,18 @@ dss:
   volumes:
   - ./conf/wso2dss/master-datasources.xml:/opt/wso2dss-$DSS_VERSION/repository/conf/datasources/master-datasources.xml
   - ./conf/wso2dss/registry.xml:/opt/wso2dss-$DSS_VERSION/repository/conf/registry.xml
+  - ./conf/wso2dss/authenticators.xml:/opt/wso2dss-$DSS_VERSION/repository/conf/security/authenticators.xml
   - ./lib/mysql-connector-java-5.1.38-bin.jar:/opt/wso2dss-$DSS_VERSION/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
 
-registry:
+greg:
   image: isim/wso2greg:$GREG_VERSION
-  command: /opt/wso2greg-$GREG_VERSION/bin/wso2server.sh -Dsetup
+  command: -Dsetup
   ports:
   - "9447:9443"
   - "9767:9763"
   volumes:
   - ./conf/wso2greg/master-datasources.xml:/opt/wso2greg-$GREG_VERSION/repository/conf/datasources/master-datasources.xml
+  - ./conf/wso2greg/authenticators.xml:/opt/wso2greg-$GREG_VERSION/repository/conf/security/authenticators.xml
   - ./conf/wso2greg/registry.xml:/opt/wso2greg-$GREG_VERSION/repository/conf/registry.xml
   - ./lib/mysql-connector-java-5.1.38-bin.jar:/opt/wso2greg-$GREG_VERSION/repository/components/lib/mysql-connector-java-5.1.38-bin.jar
 

@@ -72,7 +72,7 @@
       <dataSource>jdbc/WSO2CarbonDB_GREG</dataSource>
     </dbConfig>
 
-    <remoteInstance url="https://wso2_registry_1:9443/registry">
+    <remoteInstance url="https://$WSO2_GATEWAY:9447/registry">
       <id>instanceid</id>
       <dbConfig>remote_registry</dbConfig>
       <cacheId>root@jdbc:mysql://wso2_mysql_1:3306/registrydb</cacheId>
