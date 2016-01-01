@@ -38,8 +38,8 @@
     </ServiceProvider>  
 
     <ServiceProvider>
-      <Issuer>service-provider-apim</Issuer>
-      <AssertionConsumerService>https://$WSO2_GATEWAY:9444/acs</AssertionConsumerService>
+      <Issuer>$APIM_SSO_SERVICE_PROVIDER</Issuer>
+      <AssertionConsumerService>$APIM_SSO_ACS_URL</AssertionConsumerService>
       <SignAssertion>true</SignAssertion>
       <SignResponse>true</SignResponse>
       <EnableAttributeProfile>false</EnableAttributeProfile>
@@ -58,8 +58,8 @@
     </ServiceProvider>
 
     <ServiceProvider>
-      <Issuer>service-provider-esb</Issuer>
-      <AssertionConsumerService>https://$WSO2_GATEWAY:9445/acs</AssertionConsumerService>
+      <Issuer>$ESB_SSO_SERVICE_PROVIDER</Issuer>
+      <AssertionConsumerService>$ESB_SSO_ACS_URL</AssertionConsumerService>
       <SignAssertion>true</SignAssertion>
       <SignResponse>true</SignResponse>
       <EnableAttributeProfile>false</EnableAttributeProfile>
@@ -78,8 +78,8 @@
     </ServiceProvider>
     
     <ServiceProvider>
-      <Issuer>service-provider-dss</Issuer>
-      <AssertionConsumerService>https://$WSO2_GATEWAY:9446/acs</AssertionConsumerService>
+      <Issuer>$DSS_SSO_SERVICE_PROVIDER</Issuer>
+      <AssertionConsumerService>$DSS_SSO_ACS_URL</AssertionConsumerService>
       <SignAssertion>true</SignAssertion>
       <SignResponse>true</SignResponse>
       <EnableAttributeProfile>false</EnableAttributeProfile>
@@ -98,8 +98,8 @@
     </ServiceProvider>
 
     <ServiceProvider>
-      <Issuer>service-provider-greg</Issuer>
-      <AssertionConsumerService>https://$WSO2_GATEWAY:9447/acs</AssertionConsumerService>
+      <Issuer>$GREG_SSO_SERVICE_PROVIDER</Issuer>
+      <AssertionConsumerService>$GREG_SSO_ACS_URL</AssertionConsumerService>
       <SignAssertion>true</SignAssertion>
       <SignResponse>true</SignResponse>
       <EnableAttributeProfile>false</EnableAttributeProfile>

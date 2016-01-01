@@ -2,8 +2,8 @@ is:
   image: isim/wso2is:$IS_VERSION
   hostname: wso2identity
   ports:
-  - "9443:9443"
-  - "9763:9763"
+  - $IS_HTTPS_PORT:9443
+  - $IS_HTTP_PORT:9763
   volumes:
   - ./conf/wso2is/master-datasources.xml:/opt/wso2is-$IS_VERSION/repository/conf/datasources/master-datasources.xml
   - ./conf/wso2is/carbon.xml:/opt/wso2is-$IS_VERSION/repository/conf/carbon.xml
@@ -15,8 +15,8 @@ is:
 apim:
   image: isim/wso2apim:$APIM_VERSION
   ports:
-  - "9444:9443"
-  - "9764:9763"
+  - $APIM_HTTPS_PORT:9443
+  - $APIM_HTTP_PORT:9763
   volumes:
   - ./conf/wso2am/master-datasources.xml:/opt/wso2am-$APIM_VERSION/repository/conf/datasources/master-datasources.xml
   - ./conf/wso2am/registry.xml:/opt/wso2am-$APIM_VERSION/repository/conf/registry.xml
@@ -26,8 +26,8 @@ apim:
 esb:
   image: isim/wso2esb:$ESB_VERSION
   ports: 
-  - "9445:9443"
-  - "9765:9763"
+  - $ESB_HTTPS_PORT:9443
+  - $ESB_HTTP_PORT:9763
   volumes:
   - ./conf/wso2esb/master-datasources.xml:/opt/wso2esb-$ESB_VERSION/repository/conf/datasources/master-datasources.xml
   - ./conf/wso2esb/registry.xml:/opt/wso2esb-$ESB_VERSION/repository/conf/registry.xml
@@ -37,8 +37,8 @@ esb:
 dss:
   image: isim/wso2dss:$DSS_VERSION
   ports: 
-  - "9446:9443"
-  - "9766:9763"
+  - $DSS_HTTPS_PORT:9443
+  - $DSS_HTTP_PORT:9763
   volumes:
   - ./conf/wso2dss/master-datasources.xml:/opt/wso2dss-$DSS_VERSION/repository/conf/datasources/master-datasources.xml
   - ./conf/wso2dss/registry.xml:/opt/wso2dss-$DSS_VERSION/repository/conf/registry.xml
@@ -49,8 +49,8 @@ greg:
   image: isim/wso2greg:$GREG_VERSION
   command: -Dsetup
   ports:
-  - "9447:9443"
-  - "9767:9763"
+  - $GREG_HTTPS_PORT:9443
+  - $GREG_HTTP_PORT:9763
   volumes:
   - ./conf/wso2greg/master-datasources.xml:/opt/wso2greg-$GREG_VERSION/repository/conf/datasources/master-datasources.xml
   - ./conf/wso2greg/authenticators.xml:/opt/wso2greg-$GREG_VERSION/repository/conf/security/authenticators.xml

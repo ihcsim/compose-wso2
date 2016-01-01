@@ -32,10 +32,11 @@
         <Priority>10</Priority>
         <Config>
             <Parameter name="LoginPage">/carbon/admin/login.jsp</Parameter>
-            <Parameter name="ServiceProviderID">service-provider-dss</Parameter>
-            <Parameter name="IdentityProviderSSOServiceURL">https://$WSO2_GATEWAY:9443/samlsso</Parameter>
             <Parameter name="NameIDPolicyFormat">urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</Parameter>
-            <Parameter name="AssertionConsumerServiceURL">https://$WSO2_GATEWAY:9446/acs</Parameter>
+
+            <Parameter name="ServiceProviderID">$SSO_SERVICE_PROVIDER</Parameter>
+            <Parameter name="IdentityProviderSSOServiceURL">$IS_SAML_SSO_URL</Parameter>
+            <Parameter name="AssertionConsumerServiceURL">$ACS_URL</Parameter>
 
             <!-- <Parameter name="IdPCertAlias">wso2carbon</Parameter> -->
             <!-- <Parameter name="ResponseSignatureValidationEnabled">false</Parameter> -->
@@ -59,16 +60,14 @@
             <UrlContains></UrlContains>
         </SkipSessionValidation> -->
     </Authenticator>
-
-        <!-- Authenticator Configurations for MutualSSLAuthenticator -->
-    <!--Authenticator name="MutualSSLAuthenticator" disabled="false">
-	  <Priority>5</Priority>
-	  <Config>
-	      <Parameter name="UsernameHeader">UserName</Parameter>
-	      <Parameter name="WhiteListEnabled">false</Parameter>
-	      <Parameter name="WhiteList"/>
-	  </Config>
-    </Authenticator-->
-    
+ 
+  <!-- Authenticator Configurations for MutualSSLAuthenticator -->
+  <!--Authenticator name="MutualSSLAuthenticator" disabled="false">
+    <Priority>5</Priority>
+    <Config>
+      <Parameter name="UsernameHeader">UserName</Parameter>
+      <Parameter name="WhiteListEnabled">false</Parameter>
+      <Parameter name="WhiteList"/>
+    </Config>
+  </Authenticator-->
 </Authenticators>
-

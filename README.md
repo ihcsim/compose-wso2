@@ -22,7 +22,7 @@ Before you get started with a `docker-compose up`, note that:
 
 ### Usage
 
-1. Set up the default environmental variables and change the `WSO2_GATEWAY` variable to your `$DOCKER_HOST_IP`: `./scripts/env.bash`
+1. Set up the default environmental variables and change the `WSO2_GATEWAY` variable to your `$DOCKER_HOST_IP`: `source scripts/env.bash`
 2. Update your `/etc/hosts` file with the following line: `<$WSO2_GATEWAY> wso2identity` where `$WSO2_GATEWAY` has the same value as defined in your `scripts/env.bash` script.
 3. Pull services: `docker-compose pull <service>`
 4. Run services: `docker-compose -p wso2 --x-networking up <service>`
@@ -30,6 +30,8 @@ Before you get started with a `docker-compose up`, note that:
 6. View logs: `docker-compose -p wso2 logs <service>`
 
 ### Web Admin Consoles
+
+The exposed ports of each component can be changed using the `scripts/env.bash` script.
 
 Components             | URL
 ---------------------- | -----------------------------
@@ -65,17 +67,29 @@ The following is a list of SSO-related TODOs:
 
 ### Supported Environmental Variables
 
-The default versions of the WSO2 components, MySQL credentials and other environmental variables are found in the `scripts/env.bash` script.
+The default versions and port numbers of the WSO2 components, MySQL credentials and other environmental variables are defined in the `scripts/env.bash` script.
+
+The following is the list of environmental variables that you will need to change to cater to your environment:
 
 Variables           | Description
 ------------------- | --------------------------------
 WSO2_GATEWAY        | This should be set to either the IP address of your Docker machine, or `localhost` if you aren't using Docker machine.
-APIM_VERSION        | Version of API Manager
-DSS_VERSION         | Version of Data Service Server
-ESB_VERSION         | Version of Enterprise Service Bus
-GREG_VERSION        | Version of Governance Registry
-IS_VERSION          | Version of Identity Server
-MYSQL_VERSION       | Version of MySQL
+APIM_VERSION        | Version of the API Manager
+APIM_HTTPS_PORT     | Exposed HTTPS port of the API Manager
+APIM_HTTP_PORT      | Exposed HTTP port of the API Manager
+DSS_VERSION         | Version of the Data Service Server
+DSS_HTTPS_PORT      | Exposed HTTPS port of the Data Service Server
+DSS_HTTP_PORT       | Exposed HTTP port of the Data Service Server
+ESB_VERSION         | Version of the Enterprise Service Bus
+ESB_HTTPS_PORT      | Exposed HTTPS port of the Enterprise Service Bus
+ESB_HTTP_PORT       | Exposed HTTP port of the Enterprise Service Bus
+GREG_VERSION        | Version of the Governance Registry
+GREG_HTTPS_PORT     | Exposed HTTPS port of the Governance Registry
+GREG_HTTP_PORT      | Exposed HTTPS port of the Governance Registry
+IS_VERSION          | Version of the Identity Server
+IS_HTTPS_PORT       | Exposed HTTPS port of the Identity Server
+IS_HTTP_PORT        | Exposed HTTP port of the Identity Server
+MYSQL_VERSION       | Version of the MySQL database
 MYSQL_ROOT_PASSWORD | MySQL root password
 
 ### Override MySQL Configurations
