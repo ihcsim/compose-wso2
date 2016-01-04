@@ -25,9 +25,9 @@ Before you get started with a `docker-compose up`, note that:
 1. Set up the default environmental variables and change the `WSO2_GATEWAY` variable to your `$DOCKER_HOST_IP`: `source scripts/env.bash`
 2. Update your `/etc/hosts` file with the following line: `<$WSO2_GATEWAY> wso2identity` where `$WSO2_GATEWAY` has the same value as defined in your `scripts/env.bash` script.
 3. Pull services: `docker-compose pull <service>`
-4. Run services: `docker-compose -p wso2 --x-networking up <service>`
-5. Scale services: `docker-compose -p wso2 scale <service=counts>`
-6. View logs: `docker-compose -p wso2 logs <service>`
+4. Run services: `docker-compose --x-networking up <service>`
+5. Scale services: `docker-compose scale <service=counts>`
+6. View logs: `docker-compose logs <service>`
 
 ### Web Admin Consoles
 
@@ -73,6 +73,7 @@ The following is the list of environmental variables that you will need to chang
 
 Variables           | Description
 ------------------- | --------------------------------
+COMPOSE_PROJECT_NAME| Sets the project name. Refer Compose [documentation](https://docs.docker.com/compose/reference/overview/#compose-project-name) for more information.
 WSO2_GATEWAY        | This should be set to either the IP address of your Docker machine, or `localhost` if you aren't using Docker machine.
 APIM_VERSION        | Version of the API Manager
 APIM_HTTPS_PORT     | Exposed HTTPS port of the API Manager

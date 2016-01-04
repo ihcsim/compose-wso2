@@ -3,6 +3,7 @@
 # This script defines all the environmental variables used in this project.
 # It also replaces the inlined parameters in some configuration file templates with the appropriate values.
 
+export COMPOSE_PROJECT_NAME=wso2
 export WSO2_GATEWAY=192.168.99.100
 
 export IS_VERSION=5.0.0
